@@ -1,0 +1,29 @@
+.profile__add-button {
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
+    background-image: url(../../../image/Rectangle.png);
+    background-image: url(../../../image/Vector3.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 18px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    margin-left: auto;
+    padding: 0;
+    transition: all 0.1s linear;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1023px) {
+    .profile__add-button {
+        width: 335px;
+        margin: 36px 0 0;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .profile__add-button {
+        width: 282px;
+    }
+}
