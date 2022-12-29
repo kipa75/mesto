@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+    <div class="page__container">
+        <header class="header">
+            <img class="header__logo" alt="Логотип" src="./image/Vector.png">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__avatar-edit"><img class="profile__avatar" src="./image/kusto.jpg" alt="Фото Кусто">
+                </div>
+                <div class="profile__info">
+                    <h1 class="profile__name">Жак-Ив-Кусто</h1>
+                    <p class="profile__job">Исследователь океана</p>
+                    <button class="profile__edit-button"></button>
+                </div>
+                <button class="profile__add-button"></button>
+            </section>
+            <section class="elements">
+                <ul class="elements__list">
+                    <li class="elements__list-item"><img src="../mesto/image/karachaevsk.jpg" alt="Фото Карачавска">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Карачаевск</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                            </div>
+                    </li>
+                    <li class="elements__list-item"><img src="../mesto/image/albrus.png" alt="Фото Эльбруса">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Гора Эльбрус</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                            </div>
+                    </li>
+                    <li class="elements__list-item"><img src="../mesto/image/dombay.jpg" alt="Фото Домбай">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Домбай</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                            </div>
+                    </li>
+                    <li class="elements__list-item"><img src="../mesto/image/albrus.png" alt="Фото Эльбруса">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Гора Эльбрус</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                            </div>
+                    </li>
+                    <li class="elements__list-item"><img src="../mesto/image/dombay.jpg" alt="Фото Домбай">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Домбай</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                    </li>
+                    <li class="elements__list-item"><img src="../mesto/image/karachaevsk.jpg" alt="Фото Карачавска">
+                        <div class="elements__container">
+                            <h2 class="elements__text">Карачаевск</h2>
+                            <div class="elements__like-container">
+                                <img src="./image/Vector2.png" alt="Сердце">
+                            </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__author">&copy;2022 Кипятков Сергей</p>
+        </footer>
+    </div>
+    <div class="popup">
+        <div class="popup__container">
+            <div class="popup__close-icon"></div>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form">
+                <input type="text" class="popup__input" name="name">
+                <input type="text" class="popup__input" name="job">
+                <button type="submit" class="popup__button">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
