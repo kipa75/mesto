@@ -1,5 +1,5 @@
 .popup__close-icon {
-    background-image: url(../image/close_icon.png);
+    background-image: url(../../../image/Close-Icon.png);
     background-size: cover;
     width: 32px;
     height: 32px;
@@ -7,4 +7,6 @@
     right: -40px;
     top: -40px;
     cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
 }
