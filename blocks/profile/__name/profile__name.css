@@ -1,4 +1,6 @@
 .profile__name {
+    font-family: Inter, Arial, sans-serif;
+    font-style: normal;
     max-width: 500px;
     word-wrap: break-word;
     font-weight: 500;

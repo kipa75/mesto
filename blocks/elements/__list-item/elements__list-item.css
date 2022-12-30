@@ -1,4 +1,7 @@
 .elements__list-item {
+    font-family: Inter, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 900;
     width: 282px;
     border-radius: 10px;
     border: none;
