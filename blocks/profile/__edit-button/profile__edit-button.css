@@ -1,19 +1,21 @@
 .profile__edit-button {
-    background-color: transparent;
-    background-image: url(../../../image/Rectangle1.png);
-    background-image: url(../../../image/Vector1.png);
+    background: transparent url(../../../images/Vector3.svg);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     border: 1px solid #fff;
-    border-radius: 2px;
     width: 24px;
     height: 24px;
     padding: 0;
     margin: 5px 0 0;
     box-sizing: border-box;
-    transition: all .1s linear;
+    transition: 0.3s ease;
     align-self: center;
     grid-area: edit-button;
+    cursor: pointer;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {

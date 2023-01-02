@@ -1,6 +1,22 @@
 .elements__like-container {
+    background: transparent url(../../../images/Vector2.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    display: block;
+    height: 19px;
+    padding: 0;
+    min-width: 22px;
+    margin: 0;
+    cursor: pointer;
+
+}
+
+.elements__like-container:hover {
+    opacity: 0.8;
 }
