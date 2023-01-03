@@ -1,7 +1,15 @@
 .header {
-    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
     padding: 45px 15% 0;
     width: 100%;
+    box-sizing: border-box;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #545454;
+    padding-top: 40px;
     box-sizing: border-box;
 }
 

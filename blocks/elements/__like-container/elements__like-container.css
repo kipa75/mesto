@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    display: block;
     height: 19px;
     padding: 0;
     min-width: 22px;
@@ -17,5 +18,5 @@
 }
 
 .elements__like-container:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
