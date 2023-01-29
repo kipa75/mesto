@@ -27,50 +27,7 @@
                 <button type="button" class="profile__add-button"></button>
             </section>
             <section class="elements">
-                <ul class="elements__list">
-                    <li class="elements__list-item"><img class="elements__image" src="./images/karachaevsk.jpg"
-                            alt="Фото Карачаевска">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Карачаевск</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                    <li class="elements__list-item"><img class="elements__image" src="./images/albrus.png"
-                            alt="Фото Эльбруса">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Гора Эльбрус</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                    <li class="elements__list-item"><img class="elements__image" src="./images/dombay.jpg"
-                            alt="Фото Домбай">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Домбай</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                    <li class="elements__list-item"><img class="elements__image" src="./images/albrus.png"
-                            alt="Фото Эльбруса">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Гора Эльбрус</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                    <li class="elements__list-item"><img class="elements__image" src="./images/dombay.jpg"
-                            alt="Фото Домбай">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Домбай</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                    <li class="elements__list-item"><img class="elements__image" src="./images/karachaevsk.jpg"
-                            alt="Фото Карачаевска">
-                        <div class="elements__container">
-                            <h2 class="elements__text">Карачаевск</h2>
-                            <button type="button" class="elements__like-container"></button>
-                        </div>
-                    </li>
-                </ul>
+                <ul class="elements__list"></ul>
             </section>
         </main>
         <footer class="footer">
@@ -86,6 +43,25 @@
                 <input type="text" class="popup__input" name="job">
                 <button type="submit" class="popup__button">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <div class="popup popup_new-card">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <button type="button" class="popup__close-icon"></button>
+            <form name="edit" class="popup__form">
+                <input type="text" class="popup__input" name="name">
+                <input type="text" class="popup__input" name="link">
+                <button type="submit" class="popup__button">Создать</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup-image">
+        <div class="popup-image__container">
+            <div class="popup-image__close"></div>
+            <img class="popup-image__image"
+                src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="рисунок">
+            <div class="popup-image__title"></div>
         </div>
     </div>
     <script src="./script/index.js"></script>

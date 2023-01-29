@@ -36,11 +36,11 @@ git clone git@github.com:kipa75/mesto.git
 
 ## Ссылка на макет: 
 
-[Макет в "Figma"](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1) 
+[Макет в "Figma"](https://www.figma.com/file/ZIlzEz7zzreFyid3rzKW34/JavaScript.-Sprint-5-(Copy)?node-id=0%3A1&t=mLVOviIu91VCPvHl-1) 
 
 ## Ссылка на чеклист: 
 
-[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-4.pdf) 
+[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf) 
 
 ## Ссылка на GitHub Pages:
 [Проектная работа на GitHub Pages](https://kipa75.github.io/mesto/index) 
