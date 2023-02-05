@@ -14,6 +14,8 @@
 * Позиционирование блоков и элементов
 * Псевдоклассы CSS
 * Popup
+* Разработка валидации всех форм
+* Улучшение UX при работе с попапами
  
 
 
@@ -36,11 +38,11 @@ git clone git@github.com:kipa75/mesto.git
 
 ## Ссылка на макет: 
 
-[Макет в "Figma"](https://www.figma.com/file/ZIlzEz7zzreFyid3rzKW34/JavaScript.-Sprint-5-(Copy)?node-id=0%3A1&t=mLVOviIu91VCPvHl-1) 
+[Макет в "Figma"](https://www.figma.com/file/jF4jCa0bqrFO7jJlRe3JxL/JavaScript.-Sprint-6-(Copy)?node-id=0%3A1&t=dRKMyopmnpkdNtLH-1) 
 
 ## Ссылка на чеклист: 
 
-[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf) 
+[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-6.pdf) 
 
 ## Ссылка на GitHub Pages:
 [Проектная работа на GitHub Pages](https://kipa75.github.io/mesto/index) 
