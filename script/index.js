@@ -40,6 +40,30 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+function handleClosePopup(e) {
+  if (e.target === e.target.closest(".popup")) {
+    closePopup(e.target);
+  }
+}
+
+function setPopupHandlers() {
+  const popups = document.querySelectorAll(".popup");
+  for (let i = 0; i < popups.length; i++) {
+    popups[i].addEventListener("click", handleClosePopup);
+  }
+}
+
+function handleKeyPress(e) {
+  if (e.key == "Escape") {
+    const popup = document.querySelector(".popup_opened");
+    if (popup) {
+      closePopup(popup);
+    }
+  }
+}
+
+document.addEventListener("keyup", handleKeyPress);
+
 function openImagePopup(link, text) {
   popupImageImage.src = link;
   document.querySelector(".popup-image__title").textContent = text;
@@ -116,3 +140,4 @@ function initCards() {
 }
 
 initCards();
+setPopupHandlers();

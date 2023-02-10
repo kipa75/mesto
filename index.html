@@ -59,11 +59,13 @@
             <button type="button" class="popup__close-icon"></button>
             <form name="edit" class="popup__form">
                 <div class="popup__input-wrap">
-                    <input type="text" class="popup__input" name="name" required minlength="2" maxlength="40">
+                    <input type="text" class="popup__input" placeholder="Название" name="name" required minlength="2"
+                        maxlength="40">
                     <div class="popup__error"></div>
                 </div>
                 <div class="popup__input-wrap">
-                    <input type="text" class="popup__input" name="link" required pattern="^https?\/\/w+\/w+\/">
+                    <input type="text" class="popup__input" name="link" placeholder="Ссылка на картинку" required
+                        pattern="^https?:\/\/(\w+)(\.(\w+))+.+?">
                     <div class="popup__error"></div>
                 </div>
                 <button type="submit" class="popup__button">Создать</button>
