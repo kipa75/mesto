@@ -17,9 +17,11 @@ function checkValidation(
     inactiveButtonClass,
     inputErrorClass,
     errorClass,
+    popupSelector,
+    popupErrorSelector,
   }
 ) {
-  const error = input.closest("div").querySelector(".popup__error");
+  const error = input.closest(popupSelector).querySelector(popupErrorSelector);
   const form = input.closest(formSelector);
   const button = form.querySelector(submitButtonSelector);
 
@@ -48,6 +50,8 @@ function enableValidation({
   inactiveButtonClass,
   inputErrorClass,
   errorClass,
+  popupSelector,
+  popupErrorSelector,
 }) {
   const forms = document.querySelectorAll(formSelector);
   for (let i = 0; i < forms.length; i++) {
@@ -60,6 +64,8 @@ function enableValidation({
         inactiveButtonClass,
         inputErrorClass,
         errorClass,
+        popupSelector,
+        popupErrorSelector,
       });
     }
   }
@@ -72,4 +78,6 @@ enableValidation({
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
+  popupSelector: ".popup",
+  popupErrorSelector: ".popup__error",
 });

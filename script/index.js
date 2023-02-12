@@ -3,12 +3,6 @@ function handleRemove(evt) {
   item.remove();
 }
 
-function createDom(tag, className) {
-  const el = document.createElement(tag);
-  el.className = className;
-  return el;
-}
-
 function handleLike(evt) {
   evt.preventDefault();
   evt.target.classList.toggle("elements__like-container_like");
@@ -34,22 +28,20 @@ function createCard(name, link) {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener("click", handleClosePopup);
+  document.addEventListener("keyup", handleKeyPress);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", handleClosePopup);
+  document.removeEventListener("keyup", handleKeyPress);
+  popup.querySelector("form").reset();
 }
 
 function handleClosePopup(e) {
   if (e.target === e.target.closest(".popup")) {
     closePopup(e.target);
-  }
-}
-
-function setPopupHandlers() {
-  const popups = document.querySelectorAll(".popup");
-  for (let i = 0; i < popups.length; i++) {
-    popups[i].addEventListener("click", handleClosePopup);
   }
 }
 
@@ -61,8 +53,6 @@ function handleKeyPress(e) {
     }
   }
 }
-
-document.addEventListener("keyup", handleKeyPress);
 
 function openImagePopup(link, text) {
   popupImageImage.src = link;
