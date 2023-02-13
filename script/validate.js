@@ -8,6 +8,13 @@ function checkAllInputs(form, inputSelector) {
   return true;
 }
 
+function handleSubmit(buttonSelector, inactiveButtonClass, e) {
+  e.target.reset();
+  const button = e.target.querySelector(buttonSelector);
+  button.setAttribute("disabled", "disabled");
+  button.classList.add(inactiveButtonClass);
+}
+
 function checkValidation(
   input,
   {
@@ -31,11 +38,13 @@ function checkValidation(
     if (checkAllInputs(form, inputSelector)) {
       button.classList.remove(inactiveButtonClass);
     }
+    button.removeAttribute("disabled");
   } else {
     error.classList.add(errorClass);
     error.textContent = input.validationMessage;
     input.classList.add(inputErrorClass);
     button.classList.add(inactiveButtonClass);
+    button.setAttribute("disabled", "disabled");
   }
 }
 
@@ -55,6 +64,11 @@ function enableValidation({
 }) {
   const forms = document.querySelectorAll(formSelector);
   for (let i = 0; i < forms.length; i++) {
+    forms[i].addEventListener(
+      "submit",
+      handleSubmit.bind(null, submitButtonSelector, inactiveButtonClass),
+      false
+    );
     const inputs = forms[i].querySelectorAll(inputSelector);
     for (let j = 0; j < inputs.length; j++) {
       setValidateInput(inputs[j], {
