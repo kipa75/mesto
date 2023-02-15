@@ -36,7 +36,6 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", handleClosePopup);
   document.removeEventListener("keyup", handleKeyPress);
-  popup.querySelector("form").reset();
 }
 
 function handleClosePopup(e) {
@@ -130,4 +129,3 @@ function initCards() {
 }
 
 initCards();
-setPopupHandlers();

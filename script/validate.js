@@ -8,6 +8,13 @@ function checkAllInputs(form, inputSelector) {
   return true;
 }
 
+function handleSubmit(buttonSelector, inactiveButtonClass, e) {
+  e.target.reset();
+  const button = e.target.querySelector(buttonSelector);
+  button.setAttribute("disabled", "disabled");
+  button.classList.add(inactiveButtonClass);
+}
+
 function checkValidation(
   input,
   {
@@ -17,11 +24,13 @@ function checkValidation(
     inactiveButtonClass,
     inputErrorClass,
     errorClass,
-    popupSelector,
     popupErrorSelector,
+    inputWrapSelector,
   }
 ) {
-  const error = input.closest(popupSelector).querySelector(popupErrorSelector);
+  const error = input
+    .closest(inputWrapSelector)
+    .querySelector(popupErrorSelector);
   const form = input.closest(formSelector);
   const button = form.querySelector(submitButtonSelector);
 
@@ -31,11 +40,13 @@ function checkValidation(
     if (checkAllInputs(form, inputSelector)) {
       button.classList.remove(inactiveButtonClass);
     }
+    button.removeAttribute("disabled");
   } else {
     error.classList.add(errorClass);
     error.textContent = input.validationMessage;
     input.classList.add(inputErrorClass);
     button.classList.add(inactiveButtonClass);
+    button.setAttribute("disabled", "disabled");
   }
 }
 
@@ -52,9 +63,15 @@ function enableValidation({
   errorClass,
   popupSelector,
   popupErrorSelector,
+  inputWrapSelector,
 }) {
   const forms = document.querySelectorAll(formSelector);
   for (let i = 0; i < forms.length; i++) {
+    forms[i].addEventListener(
+      "submit",
+      handleSubmit.bind(null, submitButtonSelector, inactiveButtonClass),
+      false
+    );
     const inputs = forms[i].querySelectorAll(inputSelector);
     for (let j = 0; j < inputs.length; j++) {
       setValidateInput(inputs[j], {
@@ -66,6 +83,7 @@ function enableValidation({
         errorClass,
         popupSelector,
         popupErrorSelector,
+        inputWrapSelector,
       });
     }
   }
@@ -80,4 +98,5 @@ enableValidation({
   errorClass: "popup__error_visible",
   popupSelector: ".popup",
   popupErrorSelector: ".popup__error",
+  inputWrapSelector: ".popup__input-wrap",
 });
