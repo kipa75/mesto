@@ -1,3 +1,5 @@
+import { Card } from "./Card.js";
+
 function handleRemove(evt) {
   const item = evt.target.closest(".elements__list-item");
   item.remove();
@@ -6,24 +8,6 @@ function handleRemove(evt) {
 function handleLike(evt) {
   evt.preventDefault();
   evt.target.classList.toggle("elements__like-container_like");
-}
-
-function createCard(name, link) {
-  const newCard = document
-    .querySelector(".card-template")
-    .content.cloneNode(true);
-  const img = newCard.querySelector(".elements__image");
-
-  img.addEventListener("click", handleOpenImagePopup);
-  img.src = link;
-  newCard
-    .querySelector(".elements__remove")
-    .addEventListener("click", handleRemove);
-  newCard.querySelector(".elements__text").textContent = name;
-  newCard
-    .querySelector(".elements__like-container")
-    .addEventListener("click", handleLike);
-  return newCard;
 }
 
 function openPopup(popup) {
@@ -104,8 +88,21 @@ function handleFormAddSubmit(evt) {
   evt.preventDefault();
   const name = formAddName.value;
   const link = formAddLink.value;
-  const el = createCard(name, link);
-  elementList.insertBefore(el, elementList.childNodes[0]);
+
+  const el = new Card(
+    name,
+    link,
+    ".card-template",
+    {
+      image: ".elements__image",
+      remove: ".elements__remove",
+      text: ".elements__text",
+      like: ".elements__like-container",
+    },
+    { handleOpenImagePopup, handleRemove, handleLike }
+  );
+
+  el.render(elementList, true);
   closePopup(popupAdd);
 }
 
@@ -123,8 +120,19 @@ formAdd.addEventListener("submit", handleFormAddSubmit);
 
 function initCards() {
   for (let i = 0; i < initialCards.length; i++) {
-    const el = createCard(initialCards[i].name, initialCards[i].link);
-    elementList.appendChild(el);
+    const el = new Card(
+      initialCards[i].name,
+      initialCards[i].link,
+      ".card-template",
+      {
+        image: ".elements__image",
+        remove: ".elements__remove",
+        text: ".elements__text",
+        like: ".elements__like-container",
+      },
+      { handleOpenImagePopup, handleRemove, handleLike }
+    );
+    el.render(elementList);
   }
 }
 
