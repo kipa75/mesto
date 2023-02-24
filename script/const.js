@@ -16,3 +16,4 @@ const elementList = document.querySelector(".elements__list");
 const popupImage = document.querySelector(".popup-image");
 const popupImageImage = document.querySelector(".popup-image__image");
 const popupImageClose = popupImage.querySelector(".popup__close-icon");
+const popupImageTitle = document.querySelector(".popup-image__title");
