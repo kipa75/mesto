@@ -28,27 +28,31 @@ export class FormValidator {
     });
   }
 
-  #hideValidationErrors({ error, input, button, form }) {
-    const { inputSelector, inactiveButtonClass, inputErrorClass, errorClass } =
-      this.#selectors;
+  #hideValidationErrors({ error, input }) {
+    const { inputErrorClass, errorClass } = this.#selectors;
 
     error.classList.remove(errorClass);
     input.classList.remove(inputErrorClass);
+  }
+
+  #setButtonEnabled(button, form, { inputSelector, inactiveButtonClass }) {
     if (this.#checkAllInputs(form, inputSelector)) {
       button.classList.remove(inactiveButtonClass);
     }
     button.removeAttribute("disabled");
   }
 
-  #showValidationErrors({ error, input, button }) {
-    const { inactiveButtonClass, inputErrorClass, errorClass } =
-      this.#selectors;
+  #setButtonDisabled(button, { inactiveButtonClass }) {
+    button.classList.add(inactiveButtonClass);
+    button.setAttribute("disabled", "disabled");
+  }
+
+  #showValidationErrors({ error, input }) {
+    const { inputErrorClass, errorClass } = this.#selectors;
 
     error.classList.add(errorClass);
     error.textContent = input.validationMessage;
     input.classList.add(inputErrorClass);
-    button.classList.add(inactiveButtonClass);
-    button.setAttribute("disabled", "disabled");
   }
 
   #checkValidation(input) {
@@ -57,6 +61,8 @@ export class FormValidator {
       submitButtonSelector,
       popupErrorSelector,
       inputWrapSelector,
+      inactiveButtonClass,
+      inputSelector,
     } = this.#selectors;
 
     const error = input
@@ -66,9 +72,14 @@ export class FormValidator {
     const button = form.querySelector(submitButtonSelector);
 
     if (input.validity.valid) {
-      this.#hideValidationErrors({ error, input, button, form });
+      this.#hideValidationErrors({ error, input });
+      this.#setButtonEnabled(button, form, {
+        inputSelector,
+        inactiveButtonClass,
+      });
     } else {
       this.#showValidationErrors({ error, input, button });
+      this.#setButtonDisabled(button, { inactiveButtonClass });
     }
   }
 
@@ -88,6 +99,44 @@ export class FormValidator {
     const inputs = this.#form.querySelectorAll(inputSelector);
     for (let j = 0; j < inputs.length; j++) {
       this.#setValidateInput(inputs[j]);
+    }
+  }
+
+  static removeValidationErrors(
+    form,
+    { popupErrorSelector, submitButtonSelector, buttonDisabedClass }
+  ) {
+    const errors = form.querySelectorAll(popupErrorSelector);
+    for (let i = 0; i < errors.length; i++) {
+      errors[i].textContent = "";
+    }
+
+    const inputs = form.querySelectorAll("input");
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value) {
+        return;
+      }
+    }
+
+    const button = form.querySelector(submitButtonSelector);
+    button.classList.add(buttonDisabedClass);
+    button.setAttribute("disabled", "disabled");
+  }
+
+  static disableSubmitButton(
+    form,
+    { inputErrorClass, errorClass, popupErrorSelector }
+  ) {
+    const inputs = form.querySelectorAll("input");
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].value = "";
+      inputs[i].classList.remove(inputErrorClass);
+    }
+
+    const errors = form.querySelectorAll(popupErrorSelector);
+    for (let i = 0; i < errors.length; i++) {
+      errors[i].textContent = "";
+      errors[i].classList.remove(errorClass);
     }
   }
 }

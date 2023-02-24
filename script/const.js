@@ -17,3 +17,18 @@ const popupImage = document.querySelector(".popup-image");
 const popupImageImage = document.querySelector(".popup-image__image");
 const popupImageClose = popupImage.querySelector(".popup__close-icon");
 const popupImageTitle = document.querySelector(".popup-image__title");
+const popupEditCloseButton = popupEdit.querySelector(".popup__close-icon");
+const popupAddCloseButton = popupAdd.querySelector(".popup__close-icon");
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+  buttonDisabedClass: "popup__button_disabled",
+  popupSelector: ".popup",
+  popupErrorSelector: ".popup__error",
+  inputWrapSelector: ".popup__input-wrap",
+};

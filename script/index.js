@@ -2,43 +2,11 @@ import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
 function checkForm(form) {
-  if (!form) {
-    return;
-  }
-
-  const errors = form.querySelectorAll(".popup__error");
-  for (let i = 0; i < errors.length; i++) {
-    errors[i].textContent = "";
-  }
-
-  const inputs = form.querySelectorAll("input");
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].value) {
-      return;
-    }
-  }
-
-  const button = form.querySelector(".popup__button");
-  button.classList.add("popup__button_disabled");
-  button.setAttribute("disabled", "disabled");
+  FormValidator.removeValidationErrors(form, validationConfig);
 }
 
 function resetForm(form) {
-  if (!form) {
-    return;
-  }
-
-  const inputs = form.querySelectorAll("input");
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].value = "";
-    inputs[i].classList.remove("popup__input_type_error");
-  }
-
-  const errors = form.querySelectorAll(".popup__error");
-  for (let i = 0; i < errors.length; i++) {
-    errors[i].textContent = "";
-    errors[i].classList.remove("popup__error_visible");
-  }
+  FormValidator.disableSubmitButton(form, validationConfig);
 }
 
 function handleRemove(evt) {
@@ -52,14 +20,12 @@ function handleLike(evt) {
 }
 
 function openPopup(popup) {
-  checkForm(popup.querySelector(".popup__form"));
   popup.classList.add("popup_opened");
   popup.addEventListener("click", handleClosePopup);
   document.addEventListener("keyup", handleKeyPress);
 }
 
 function closePopup(popup) {
-  resetForm(popup.querySelector(".popup__form"));
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", handleClosePopup);
   document.removeEventListener("keyup", handleKeyPress);
@@ -72,7 +38,7 @@ function handleClosePopup(e) {
 }
 
 function handleKeyPress(e) {
-  if (e.key == "Escape") {
+  if (e.key === "Escape") {
     const popup = document.querySelector(".popup_opened");
     if (popup) {
       closePopup(popup);
@@ -81,6 +47,7 @@ function handleKeyPress(e) {
 }
 
 function openImagePopup(link, text) {
+  //popupImageImage - это div
   popupImageImage.style.backgroundImage = "url(" + link + ")";
   popupImageTitle.textContent = text;
   openPopup(popupImage);
@@ -102,17 +69,27 @@ function handleButtonEditClick(evt) {
   formName.value = name;
   formJob.value = job;
   openPopup(popupEdit);
+  checkForm(popupEdit.querySelector(".popup__form"));
 }
 
 function handleButtonAddClick(evt) {
   evt.preventDefault();
   openPopup(popupAdd);
+  checkForm(popupAdd.querySelector(".popup__form"));
 }
 
 function handleClosePopupImageClick(evt) {
   evt.preventDefault();
   closePopup(popupImage);
 }
+
+popupEditCloseButton.addEventListener(
+  "click",
+  () => resetForm(popupEdit),
+  false
+);
+
+popupAddCloseButton.addEventListener("click", () => resetForm(popupAdd), false);
 
 buttonEdit.addEventListener("click", handleButtonEditClick, false);
 
@@ -184,14 +161,4 @@ function enableValidation(selectors) {
   }
 }
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-  popupSelector: ".popup",
-  popupErrorSelector: ".popup__error",
-  inputWrapSelector: ".popup__input-wrap",
-});
+enableValidation(validationConfig);
