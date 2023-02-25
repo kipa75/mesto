@@ -1,13 +1,56 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
-function checkForm(form) {
-  FormValidator.removeValidationErrors(form, validationConfig);
+function handleButtonEditClick(validator, evt) {
+  evt.preventDefault();
+  const name = profileName.textContent;
+  const job = profileJob.textContent;
+  formName.value = name;
+  formJob.value = job;
+  openPopup(popupEdit);
+  validator.removeValidationErrors();
 }
 
-function resetForm(form) {
-  FormValidator.disableSubmitButton(form, validationConfig);
+function handleButtonAddClick(validator, evt) {
+  evt.preventDefault();
+  const button = popupAdd.querySelector(".popup__button");
+  button.classList.add("popup__button_disabled");
+  button.setAttribute("disabled", "disabled");
+  openPopup(popupAdd);
+  validator.removeValidationErrors();
 }
+
+function bindForm(form, button, closeBtn, validator, onClick) {
+  validator.enableValidation();
+
+  closeBtn.addEventListener(
+    "click",
+    () => validator.disableSubmitButton(),
+    false
+  );
+
+  button.addEventListener("click", onClick.bind(null, validator), false);
+}
+
+function run() {
+  bindForm(
+    formEdit,
+    buttonEdit,
+    popupEditCloseButton,
+    new FormValidator(formEdit, validationConfig),
+    handleButtonEditClick
+  );
+
+  bindForm(
+    formAdd,
+    buttonAdd,
+    popupAddCloseButton,
+    new FormValidator(formAdd, validationConfig),
+    handleButtonAddClick
+  );
+}
+
+run();
 
 function handleRemove(evt) {
   const item = evt.target.closest(".elements__list-item");
@@ -47,7 +90,6 @@ function handleKeyPress(e) {
 }
 
 function openImagePopup(link, text) {
-  //popupImageImage - это div
   popupImageImage.style.backgroundImage = "url(" + link + ")";
   popupImageTitle.textContent = text;
   openPopup(popupImage);
@@ -62,38 +104,10 @@ function handleOpenImagePopup(evt) {
   );
 }
 
-function handleButtonEditClick(evt) {
-  evt.preventDefault();
-  const name = profileName.textContent;
-  const job = profileJob.textContent;
-  formName.value = name;
-  formJob.value = job;
-  openPopup(popupEdit);
-  checkForm(popupEdit.querySelector(".popup__form"));
-}
-
-function handleButtonAddClick(evt) {
-  evt.preventDefault();
-  openPopup(popupAdd);
-  checkForm(popupAdd.querySelector(".popup__form"));
-}
-
 function handleClosePopupImageClick(evt) {
   evt.preventDefault();
   closePopup(popupImage);
 }
-
-popupEditCloseButton.addEventListener(
-  "click",
-  () => resetForm(popupEdit),
-  false
-);
-
-popupAddCloseButton.addEventListener("click", () => resetForm(popupAdd), false);
-
-buttonEdit.addEventListener("click", handleButtonEditClick, false);
-
-buttonAdd.addEventListener("click", handleButtonAddClick, false);
 
 popupImageClose.addEventListener("click", handleClosePopupImageClick, false);
 
@@ -152,13 +166,3 @@ function initCards() {
 }
 
 initCards();
-
-function enableValidation(selectors) {
-  const forms = document.querySelectorAll(selectors.formSelector);
-  for (let i = 0; i < forms.length; i++) {
-    const validator = new FormValidator(forms[i], selectors);
-    validator.enableValidation();
-  }
-}
-
-enableValidation(validationConfig);

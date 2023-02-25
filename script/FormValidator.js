@@ -102,38 +102,32 @@ export class FormValidator {
     }
   }
 
-  static removeValidationErrors(
-    form,
-    { popupErrorSelector, submitButtonSelector, buttonDisabedClass }
-  ) {
-    const errors = form.querySelectorAll(popupErrorSelector);
+  removeValidationErrors() {
+    const { popupErrorSelector, submitButtonSelector, buttonDisabedClass } =
+      this.#selectors;
+
+    const errors = this.#form.querySelectorAll(popupErrorSelector);
     for (let i = 0; i < errors.length; i++) {
       errors[i].textContent = "";
     }
 
-    const inputs = form.querySelectorAll("input");
+    const inputs = this.#form.querySelectorAll("input");
     for (let i = 0; i < inputs.length; i++) {
       if (inputs[i].value) {
         return;
       }
     }
-
-    const button = form.querySelector(submitButtonSelector);
-    button.classList.add(buttonDisabedClass);
-    button.setAttribute("disabled", "disabled");
   }
 
-  static disableSubmitButton(
-    form,
-    { inputErrorClass, errorClass, popupErrorSelector }
-  ) {
-    const inputs = form.querySelectorAll("input");
+  disableSubmitButton() {
+    const { inputErrorClass, errorClass, popupErrorSelector } = this.#selectors;
+    const inputs = this.#form.querySelectorAll("input");
     for (let i = 0; i < inputs.length; i++) {
       inputs[i].value = "";
       inputs[i].classList.remove(inputErrorClass);
     }
 
-    const errors = form.querySelectorAll(popupErrorSelector);
+    const errors = this.#form.querySelectorAll(popupErrorSelector);
     for (let i = 0; i < errors.length; i++) {
       errors[i].textContent = "";
       errors[i].classList.remove(errorClass);
