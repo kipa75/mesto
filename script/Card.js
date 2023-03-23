@@ -4,6 +4,8 @@ export class Card {
   #template = null;
   #selectors = null;
   #handlers = null;
+  #img = null;
+  #newCard = null;
 
   constructor(name, link, template, selectors, handlers) {
     this.#name = name;
@@ -20,12 +22,12 @@ export class Card {
     const { remove, text, like } = this.#selectors;
     const { handleOpenImagePopup, handleRemove, handleLike } = this.#handlers;
 
-    this.img.addEventListener("click", handleOpenImagePopup);
+    this.#img.addEventListener("click", handleOpenImagePopup);
 
-    this.img.src = this.#link;
-    this.newCard.querySelector(remove).addEventListener("click", handleRemove);
-    this.newCard.querySelector(text).textContent = this.#name;
-    this.newCard.querySelector(like).addEventListener("click", handleLike);
+    this.#img.src = this.#link;
+    this.#newCard.querySelector(remove).addEventListener("click", handleRemove);
+    this.#newCard.querySelector(text).textContent = this.#name;
+    this.#newCard.querySelector(like).addEventListener("click", handleLike);
   }
 
   #getTemplate() {
@@ -35,16 +37,12 @@ export class Card {
   #create() {
     const { image } = this.#selectors;
 
-    this.newCard = this.#getTemplate();
+    this.#newCard = this.#getTemplate();
 
-    this.img = this.newCard.querySelector(image);
+    this.#img = this.#newCard.querySelector(image);
   }
 
-  render(parent, begin = false) {
-    if (begin) {
-      parent.insertBefore(this.newCard, parent.childNodes[0]);
-    } else {
-      parent.appendChild(this.newCard);
-    }
+  getNode() {
+    return this.#newCard;
   }
 }

@@ -20,7 +20,7 @@ const popupImageTitle = document.querySelector(".popup-image__title");
 const popupEditCloseButton = popupEdit.querySelector(".popup__close-icon");
 const popupAddCloseButton = popupAdd.querySelector(".popup__close-icon");
 
-const validationConfig = {
+export const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -31,4 +31,28 @@ const validationConfig = {
   popupSelector: ".popup",
   popupErrorSelector: ".popup__error",
   inputWrapSelector: ".popup__input-wrap",
+};
+
+export const elements = {
+  popupEdit,
+  formEdit,
+  popupAdd,
+  formAdd,
+  formJob,
+  formName,
+  formAddLink,
+  formAddName,
+  buttonEdit,
+  buttonAdd,
+  profileName,
+  profileJob,
+  popupEditCloseIcon,
+  popupAddCloseIcon,
+  elementList,
+  popupImage,
+  popupImageImage,
+  popupImageClose,
+  popupImageTitle,
+  popupEditCloseButton,
+  popupAddCloseButton,
 };

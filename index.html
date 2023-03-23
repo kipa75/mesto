@@ -12,11 +12,11 @@
 <body class="page">
     <div class="page__container">
         <header class="header">
-            <img class="header__logo" alt="Логотип" src="./images/Vector1.svg">
+            <img class="header__logo" alt="Логотип" src="<%=require('./images/Vector1.svg')%>">
         </header>
         <main class="content">
             <section class="profile">
-                <div class="profile__avatar-edit"><img class="profile__avatar" src="./images/kusto.jpg"
+                <div class="profile__avatar-edit"><img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>"
                         alt="Аватар пользователя">
                 </div>
                 <div class="profile__info">
@@ -91,9 +91,7 @@
             </div>
         </li>
     </template>
-    <script src="./script/const.js"></script>
-    <script src="./script/cards.js"></script>
-    <script type="module" src="./script/index.js"></script>
+    <script scr="./main.js"></script>
 </body>
 
 </html>
