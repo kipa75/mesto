@@ -6,7 +6,7 @@ export class Card {
   #handlers = null;
   #img = null;
   #card = null;
-  #id = 0;
+  #root = null;
 
   constructor(name, link, template, selectors, handlers) {
     this.#name = name;
@@ -38,7 +38,14 @@ export class Card {
   }
 
   #handleRemove = () => {
-    document.getElementById(this.#id).remove();
+    this.#remove();
+  };
+
+  #remove = () => {
+    // удаляем root фрагмента, так как template fragment из dom удалять нельзя
+    this.#root.remove();
+    this.#root = null;
+    this.#card = null;
   };
 
   #handleLike = (evt) => {
@@ -50,9 +57,7 @@ export class Card {
     const { image } = this.#selectors;
 
     this.#card = this.#getTemplate();
-    this.#id = Math.random().toString();
-    this.#card.querySelector("li").setAttribute("id", this.#id);
-
+    this.#root = this.#card.querySelector("li");
     this.#img = this.#card.querySelector(image);
   }
 

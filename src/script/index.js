@@ -104,7 +104,11 @@ function handleFormAddSubmit(evt) {
   const name = formAddName.value;
   const link = formAddLink.value;
 
+<<<<<<< HEAD
+  section.addItem({ name, link }, true);
+=======
   section.addItem({ name, link });
+>>>>>>> 20e4ab6539adbed2f0d8db82718e842968d35765
 
   addPopup.close();
 }
