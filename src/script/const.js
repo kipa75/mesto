@@ -19,6 +19,16 @@ const popupImageClose = popupImage.querySelector(".popup__close-icon");
 const popupImageTitle = document.querySelector(".popup-image__title");
 const popupEditCloseButton = popupEdit.querySelector(".popup__close-icon");
 const popupAddCloseButton = popupAdd.querySelector(".popup__close-icon");
+const popupRemove = document.querySelector(".popup-remove");
+const popupRemoveBtn = popupRemove.querySelector(".popup-remove__button");
+const popupEditAvatar = document.querySelector(".popup-edit-avatar");
+const popupEditAvatarBtn = popupEditAvatar.querySelector(".popup__button");
+const avatarEdit = document.querySelector(".profile__avatar-edit");
+const profileAvatar = document.querySelector(".profile__avatar");
+const popupEditAvatarCloseButton =
+  popupEditAvatar.querySelector(".popup__close-icon");
+const formEditAvatar = popupEditAvatar.querySelector(".popup__form");
+const avatarUrlLink = formEditAvatar.link;
 
 export const validationConfig = {
   formSelector: ".popup__form",
@@ -55,4 +65,13 @@ export const elements = {
   popupImageTitle,
   popupEditCloseButton,
   popupAddCloseButton,
+  popupRemoveBtn,
+  popupRemove,
+  popupEditAvatar,
+  popupEditAvatarBtn,
+  avatarEdit,
+  popupEditAvatarCloseButton,
+  formEditAvatar,
+  profileAvatar,
+  avatarUrlLink,
 };

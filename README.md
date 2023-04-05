@@ -13,7 +13,8 @@
 * Создание класса Popup, который отвечает за открытие и закрытие попапа.
 * Создание класса PopupWithImage, который наследует от Popup. Этот класс перезаписывает родительский метод open. В методе open класса PopupWithImage нужно вставлять в попап картинку и атрибут src изображения и подпись к картинке.
 * Создание класса UserInfo: отвечает за управление отображением информации о пользователе на странице.
-* настроена сборка вебпаком.
+* Настроена сборка вебпаком.
+* Подлючение проекта к серверу.
 
 ## Создание класса Card:
 * Принимает в конструктор её данные и селектор её template-элемента.
@@ -49,7 +50,7 @@ git clone git@github.com:kipa75/mesto.git
 
 ## Ссылка на чеклист: 
 
-[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-8.pdf) 
+[Чеклист проектной работы](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-9.pdf) 
 
 ## Ссылка на GitHub Pages:
 [Проектная работа на GitHub Pages](https://kipa75.github.io/mesto/index) 

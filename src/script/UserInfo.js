@@ -1,3 +1,5 @@
+import { api } from "./Api";
+
 export class UserInfo {
   #name = null;
   #info = null;
@@ -8,14 +10,27 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    return {
-      name: this.#name.textContent,
-      info: this.#info.textContent,
-    };
+    return api.getUser();
   }
 
   setUserInfo({ name, info }) {
     this.#name.textContent = name;
     this.#info.textContent = info;
+
+    return api.setUser({ name, info });
+  }
+
+  updateInfo() {
+    return this.getUserInfo().then(({ name, info, id, avatar }) => {
+      this.#name.textContent = name;
+      this.#info.textContent = info;
+
+      return {
+        name,
+        info,
+        id,
+        avatar,
+      };
+    });
   }
 }
