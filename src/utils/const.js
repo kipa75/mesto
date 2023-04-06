@@ -24,7 +24,7 @@ const popupRemoveBtn = popupRemove.querySelector(".popup-remove__button");
 const popupEditAvatar = document.querySelector(".popup-edit-avatar");
 const popupEditAvatarBtn = popupEditAvatar.querySelector(".popup__button");
 const avatarEdit = document.querySelector(".profile__avatar-edit");
-const profileAvatar = document.querySelector(".profile__avatar");
+const profileAvatarSelector = ".profile__avatar";
 const popupEditAvatarCloseButton =
   popupEditAvatar.querySelector(".popup__close-icon");
 const formEditAvatar = popupEditAvatar.querySelector(".popup__form");
@@ -72,6 +72,6 @@ export const elements = {
   avatarEdit,
   popupEditAvatarCloseButton,
   formEditAvatar,
-  profileAvatar,
   avatarUrlLink,
+  profileAvatarSelector,
 };

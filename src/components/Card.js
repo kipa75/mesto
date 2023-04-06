@@ -1,5 +1,3 @@
-import { api } from "./Api";
-
 export class Card {
   #name = null;
   #link = null;
@@ -47,7 +45,9 @@ export class Card {
     const { remove, text, like } = this.#selectors;
     const { handleOpenImagePopup } = this.#handlers;
 
-    this.#img.addEventListener("click", handleOpenImagePopup);
+    this.#img.addEventListener("click", () =>
+      handleOpenImagePopup({ link: this.#link, name: this.#name })
+    );
 
     this.#img.src = this.#link;
     const removeBtn = this.#card.querySelector(remove);
@@ -85,7 +85,6 @@ export class Card {
   #handleRemove = () => {
     const { handleClickRemove } = this.#handlers;
     handleClickRemove(this);
-    //this.#remove();
   };
 
   remove = () => {
@@ -94,21 +93,14 @@ export class Card {
     this.#card = null;
   };
 
-  #setLikeCount = (like = true) => {
-    const method = like ? api.like(this.#id) : api.unlike(this.#id);
-    method
-      .then(({ likes }) => {
-        this.#likes = likes.length;
-        this.#likeCountElement.textContent = this.#likes;
-      })
-      .catch((e) => console.log(e));
-  };
-
   #handleLike = (evt) => {
     evt.preventDefault();
+    const { handleLike } = this.#handlers;
     this.#isMyLike = !this.#isMyLike;
     evt.target.classList.toggle("elements__like-container_like");
-    this.#setLikeCount(this.#isMyLike);
+    handleLike(this.#isMyLike, this.#id).then((likes) => {
+      this.#likeCountElement.textContent = likes;
+    });
   };
 
   #create() {

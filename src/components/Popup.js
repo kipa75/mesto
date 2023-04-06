@@ -1,5 +1,6 @@
 export class Popup {
   #popup = null;
+  #closeIcon = null;
 
   getPopup() {
     return this.#popup;
@@ -7,13 +8,12 @@ export class Popup {
 
   #setListeners() {
     this.#popup.addEventListener("click", this.#handleClosePopup);
-    this.#popup
-      .querySelector(".popup__close-icon")
-      .addEventListener("mousedown", this.#handleClosePopupByIcon);
+    this.#closeIcon.addEventListener("mousedown", this.#handleClosePopupByIcon);
   }
 
   constructor(selector) {
     this.#popup = document.querySelector(selector);
+    this.#closeIcon = this.#popup.querySelector(".popup__close-icon");
     this.#setListeners();
   }
 
