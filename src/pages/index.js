@@ -7,7 +7,7 @@ import { Section } from "../components/Section";
 import { UserInfo } from "../components/UserInfo";
 import { PopupWithForm } from "../components/PopupWithForm";
 import { PopupWithImage } from "../components/PopupWithImage";
-import { api } from "../utils/utils";
+import { api } from "../components/Api";
 import { PopupWithStatus } from "../components/PopupWithStatus";
 
 const {
