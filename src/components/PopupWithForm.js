@@ -35,10 +35,6 @@ export class PopupWithForm extends PopupWithStatus {
     return values;
   };
 
-  open() {
-    super.open();
-  }
-
   close() {
     super.close();
     this.#form.reset();

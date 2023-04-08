@@ -7,7 +7,7 @@ import { Section } from "../components/Section";
 import { UserInfo } from "../components/UserInfo";
 import { PopupWithForm } from "../components/PopupWithForm";
 import { PopupWithImage } from "../components/PopupWithImage";
-import { api } from "../components/Api";
+import { api } from "../utils/utils";
 import { PopupWithStatus } from "../components/PopupWithStatus";
 
 const {
@@ -132,6 +132,7 @@ function handleRemove() {
 
         removePopup.close();
       })
+      .catch((e) => console.log(e))
       .finally(() => removePopup.renderLoading(false));
   }
 }
@@ -153,6 +154,7 @@ function handlEditAvatarSubmit({ link }) {
     .then(({ avatar }) => {
       userInfo.setAvatar(avatar);
     })
+    .catch((e) => console.log(e))
     .finally(() => editAvatarPopup.renderLoading(false));
 }
 

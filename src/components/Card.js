@@ -13,6 +13,8 @@ export class Card {
   #isMyLike = false;
   #myId = 0;
   #likeCountElement = null;
+  #likeElement = null;
+  #removeElement = null;
 
   constructor(
     name,
@@ -38,6 +40,7 @@ export class Card {
     this.#myId = myId;
 
     this.#create();
+    this.#setIninialState();
     this.#addListeners();
   }
 
@@ -64,17 +67,6 @@ export class Card {
     const template = document
       .querySelector(this.#template)
       .content.cloneNode(true);
-    const { remove } = this.#selectors;
-    if (!this.#my) {
-      template.querySelector(remove).remove();
-    }
-    if (this.#isMyLike) {
-      template
-        .querySelector(".elements__like-container")
-        .classList.add("elements__like-container_like");
-    }
-    template.querySelector(".elements__like-count").textContent = this.#likes;
-
     return template;
   }
 
@@ -97,20 +89,33 @@ export class Card {
     evt.preventDefault();
     const { handleLike } = this.#handlers;
     this.#isMyLike = !this.#isMyLike;
-    evt.target.classList.toggle("elements__like-container_like");
+
     handleLike(this.#isMyLike, this.#id).then((likes) => {
       this.#likeCountElement.textContent = likes;
+      evt.target.classList.toggle("elements__like-container_like");
     });
   };
 
   #create() {
-    const { image } = this.#selectors;
+    const { image, remove } = this.#selectors;
 
     this.#card = this.#getTemplate();
     this.#root = this.#card.querySelector("li");
     this.#img = this.#card.querySelector(image);
     this.#likeCountElement = this.#card.querySelector(".elements__like-count");
+    this.#likeElement = this.#card.querySelector(".elements__like-container");
+    this.#removeElement = this.#card.querySelector(remove);
   }
+
+  #setIninialState = () => {
+    if (!this.#my) {
+      this.#removeElement.remove();
+    }
+    if (this.#isMyLike) {
+      this.#likeElement.classList.add("elements__like-container_like");
+    }
+    this.#likeCountElement.textContent = this.#likes;
+  };
 
   getNode() {
     return this.#card;
